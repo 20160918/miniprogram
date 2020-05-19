@@ -1,0 +1,46 @@
+<div style="margin-bottom: 16px;">
+  <button nz-button (click)="addcourse()" >添加课程</button>
+  <button nz-button (click)="exportAsExcelFile()" style="float: right">导出课程</button>
+</div>
+
+
+<nz-modal [(nzVisible)]="isVisible" nzTitle="添加课程" (nzOnCancel)="handleCancel()" (nzOnOk)="handleOk()">
+  <app-addcourse (addMsg)="getAddMsg($event)"></app-addcourse>
+</nz-modal>
+
+
+<nz-table
+    #dynamicTable
+    nzBordered
+    [nzData]="listOfData"
+    [nzShowSizeChanger]="true"
+    [nzFrontPagination]="true"
+    [nzShowPagination]="true"
+    [nzFooter]="'课程数据'"
+    [nzScroll]="fixHeader ? { y: '270px' } : null"
+>
+  <thead>
+  <tr>
+    <th nzWidth="150px">课程编号</th>
+    <th nzWidth="250px">课程名称</th>
+    <th nzWidth="100px">学习人数</th>
+    <th nzWidth="100px">课程音频</th>
+    <th nzWidth="850px">课程通知</th>
+    <th  nzRight="0px">操作</th>
+  </tr>
+  </thead>
+  <tbody>
+  <ng-template  ngFor let-data [ngForOf]="dynamicTable.data">
+    <tr>
+      <td>{{ data.course_id }}</td>
+      <td>{{ data.course_name }}</td>
+      <td>{{ data.course_studyNum }}</td>
+      <td>{{ data.course_vf }}</td>
+      <td >{{ data.course_notice }}</td>
+      <td nzRight="0px">
+        <a  nz-popconfirm nzTitle="确认删除?" (nzOnConfirm)="deleteCourse(data.course_id)">删除</a>
+      </td>
+    </tr>
+  </ng-template>
+  </tbody>
+</nz-table>

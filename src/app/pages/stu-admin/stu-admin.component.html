@@ -1,0 +1,57 @@
+<div style="margin-bottom: 16px;">
+  <button nz-button (click)="exportAsExcelFile()">导出学员数据</button>
+</div>
+
+<nz-table
+    #dynamicTable
+    nzBordered
+    [nzData]="listOfData"
+    [nzShowSizeChanger]="true"
+    [nzFrontPagination]="true"
+    [nzShowPagination]="true"
+    [nzFooter]="'学员数据'"
+    [nzScroll]="fixHeader ? { y: '270px' } : null"
+>
+  <thead>
+  <tr>
+    <th nzWidth="120px">账户</th>
+    <th nzWidth="90px">姓名</th>
+    <th nzWidth="70px">性别</th>
+    <th nzWidth="70px">年龄</th>
+    <th nzWidth="120px">电话</th>
+    <th nzWidth="100px">密码</th>
+    <th nzWidth="100px">微信昵称</th>
+    <th nzWidth="100px">微信头像</th>
+    <th nzWidth="150px">微信账号</th>
+    <th nzWidth="100px">课程数</th>
+    <th nzWidth="120px">兴趣</th>
+    <th nzWidth="100px">所在城市</th>
+    <th nzWidth="100px">打卡天数</th>
+    <th nzWidth="100px">经度</th>
+    <th  nzRight="0px">纬度</th>
+  </tr>
+  </thead>
+  <tbody>
+  <ng-template  ngFor let-data [ngForOf]="dynamicTable.data">
+    <tr>
+      <td>{{ data.stu_account }}</td>
+      <td>{{ data.stu_name }}</td>
+      <td>{{ data.stu_sex }}</td>
+      <td>{{ data.stu_age }}</td>
+      <td>{{ data.stu_phone }}</td>
+      <td >{{ data.stu_password }}</td>
+      <td>{{ data.stu_weiXinName }}</td>
+      <td>{{ data.stu_avatar }}</td>
+      <td>{{ data.stu_weiXinNum }}</td>
+      <td>{{ data.stu_courseNum }}</td>
+      <td>{{ data.stu_interest }}</td>
+      <td>{{ data.stu_position }}</td>
+      <td>{{ data.stu_cardDay }}</td>
+      <td>{{ data.longitude }}</td>
+      <td  nzRight="0px">{{ data.latitude }}</td>
+    </tr>
+  </ng-template>
+  </tbody>
+</nz-table>
+
+

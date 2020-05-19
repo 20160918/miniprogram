@@ -1,0 +1,51 @@
+
+<main class="auth-main">
+  <div class="auth-block">
+    <div><h1>宝妈商学院后台管理</h1></div>
+
+    <div class="gutter-example" style="margin-top: 60px">
+      <div nz-row nzGutter="12">
+        <div nz-col class="gutter-row" nzSpan="4">
+          <div class="gutter-box" style="padding: 8px;text-align: right;font-size: 15px">
+            <label >账号</label>
+          </div>
+        </div>
+        <div nz-col class="gutter-row" nzSpan="20">
+          <div class="gutter-box">
+            <input nz-input type="user" class="form-control" placeholder="请输入账号" [(ngModel)]="paramUser.administrator_account">
+          </div>
+        </div>
+      </div>
+      <div nz-row nzGutter="16"  style="margin-top: 20px">
+        <div nz-col class="gutter-row" nzSpan="4">
+          <div class="gutter-box"  style="padding: 8px;text-align: right;font-size: 15px">
+            <label >密码</label>
+          </div>
+        </div>
+        <div nz-col class="gutter-row" nzSpan="20">
+          <div class="gutter-box">
+            <input nz-input type="password" class="form-control" placeholder="请输入密码" [(ngModel)]="paramUser.administrator_password">
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="gutter-example" style="margin-top: 40px">
+      <div nz-row nzGutter="16">
+        <div nz-col class="gutter-row"  nzSpan="1"></div>
+        <div nz-col class="gutter-row" nzSpan="23">
+          <div class="gutter-box" style="padding-left: 80px">
+            <form (submit)="onSubmit(paramUser)" role="form">
+              <button nz-button nzType="default" type="submit"  nzBlock>登录</button>
+            </form>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+
+  </div>
+
+</main>
+

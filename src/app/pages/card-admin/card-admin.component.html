@@ -1,0 +1,38 @@
+<div style="margin-bottom: 16px;">
+  <button nz-button (click)="exportAsExcelFile()">导出打卡数据</button>
+</div>
+
+
+<nz-table
+    #dynamicTable
+    nzBordered
+    [nzData]="listOfData"
+    [nzShowSizeChanger]="true"
+    [nzFrontPagination]="true"
+    [nzShowPagination]="true"
+    [nzFooter]="'打卡数据'"
+    [nzScroll]="fixHeader ? { y: '270px' } : null"
+>
+  <thead>
+  <tr>
+    <th nzWidth="150px">学员账户</th>
+    <th nzWidth="250px">打卡时间</th>
+    <th nzWidth="1050px">打卡内容</th>
+    <th  nzRight="0px">编辑</th>
+  </tr>
+  </thead>
+  <tbody>
+  <ng-template  ngFor let-data [ngForOf]="dynamicTable.data">
+    <tr>
+      <td>{{ data.stu_account }}</td>
+      <td>{{ data.record_time }}</td>
+      <td>{{ data.record_content }}</td>
+      <td nzRight="0px">
+        <a>编辑</a>
+      </td>
+    </tr>
+  </ng-template>
+  </tbody>
+</nz-table>
+
+
